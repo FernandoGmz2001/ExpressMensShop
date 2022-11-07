@@ -23,30 +23,37 @@ router.get("/create", (req, res) => {
   res.render("create");
 });
 
-router.post("/save", (req, res) => {
-  let data = {
-    Id_Producto: "",
-    Nombre: req.body.nombre,
-    Precio: req.body.precio,
-    Peso: req.body.peso,
-    Descripcion: req.body.descripcion,
-    Imagen: req.body.imagen,
-    Categoria: req.body.categoria,
-    Cantidad: req.body.cantidad,
-    NombreCategoria: req.body.nombreCategoria,
-  };
-  let consulta = "INSERT INTO Productos SET ?";
-
-  request.query(consulta, data, function (err, results) {
-    if (err) {
-      throw err;
-    } else {
-      res.redirect("/dashboard");
+router.get("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  request.query(
+    `SELECT * FROM Productos WHERE Id_Producto='${id}'`,
+    (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        res.render("edit", { producto: results.recordset[0] });
+      }
     }
-  });
+  );
 });
 
-// const crud = require("./controllers/crud");
-// router.post("/save", crud.save);
+router.get("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  request.query(
+    `DELETE FROM Productos WHERE Id_Producto = '${id}'`,
+    (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        res.redirect("/dashboard");
+      }
+    }
+  );
+});
+
+const crud = require("./controllers/crud");
+router.post("/save", crud.save);
+
+router.post("/update", crud.update);
 
 module.exports = router;

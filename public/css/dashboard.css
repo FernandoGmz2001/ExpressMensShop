@@ -71,6 +71,16 @@
   font-weight: bold;
 }
 
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.link-focused {
+  color: white;
+  text-decoration: none;
+}
+
 /* Table styling */
 .table-container {
   display: grid;

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/create.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include ("template/navbar") %> <% if (producto) { %>
+    <div class="form-container">
+      <form action="/update" method="POST" class="form">
+        <input
+          id="id"
+          name="id"
+          value="<%= producto.Id_Producto %>"
+          type="text"
+          hidden
+        />
+        <div class="form-title"><h3>Editar producto</h3></div>
+        <div class="form-content">
+          <div class="input-container">
+            <label>Nombre</label>
+            <input
+              type="text"
+              required="true"
+              name="nombre"
+              id="nombre"
+              value="<%= producto.Nombre %> "
+            />
+          </div>
+          <div class="input-container">
+            <label>Precio</label>
+            <input
+              type="text"
+              required="true"
+              name="precio"
+              id="precio"
+              value="<%= producto.Precio %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Peso</label>
+            <input
+              type="text"
+              required
+              name="peso"
+              value="<%= producto.Peso %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Descripción</label>
+            <input
+              type="text"
+              required
+              name="descripcion"
+              value="<%= producto.Descripcion %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Imagen</label>
+            <input
+              type="text"
+              required
+              name="imagen"
+              value="<%= producto.Imagen %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Categoría</label>
+            <input
+              type="text"
+              required
+              name="categoria"
+              value="<%= producto.Categoria %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Cantidad</label>
+            <input
+              type="text"
+              required
+              name="cantidad"
+              value="<%= producto.Cantidad %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Nombre de la categoría</label>
+            <input
+              type="text"
+              required
+              name="nombreCategoria"
+              value="<%= producto.NombreCategoria %>"
+            />
+          </div>
+          <div class="btnContainer">
+            <button type="submit" value="submit" class="btnGuardar">
+              Guardar
+            </button>
+            <a class="btnCancelar" href="/dashboard">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <% } %>
+  </body>
+</html>

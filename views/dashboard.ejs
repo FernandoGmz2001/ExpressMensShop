@@ -25,17 +25,17 @@
             <div class="products-image_container image">
               <i class="bx bxs-shopping-bags"></i>
             </div>
-            <p>Productos</p>
+            <a href="#" class="link link-focused">Productos</a>
           </div>
           <div class="users-option option">
             <div class="user-image_container image">
               <i class="bx bxs-user"></i>
             </div>
-            <p>Usuarios</p>
+            <a href="#" class="link">Usuarios</a>
           </div>
           <div class="orders-option option">
             <i class="bx bx-paper-plane"></i>
-            <p>Pedidos</p>
+            <a href="#" class="link">Pedidos</a>
           </div>
         </div>
         <div class="dashboard-content">
@@ -71,10 +71,16 @@
                 <td class="table-cell"><%= product.Cantidad %></td>
                 <td class="table-cell"><%= product.NombreCategoria %></td>
                 <td class="btnEditar-container">
-                  <a href="/edit" class="btnEditar">Editar</a>
+                  <a href="/edit/<%= product.Id_Producto%>" class="btnEditar"
+                    >Editar</a
+                  >
                 </td>
                 <td class="btnEliminar-container">
-                  <a href="/delete" class="btnEliminar">Eliminar</a>
+                  <a
+                    href="/delete/<%= product.Id_Producto%>"
+                    class="btnEliminar"
+                    >Eliminar</a
+                  >
                 </td>
               </tr>
               <% }) %>
