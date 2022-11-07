@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --table-border: rgb(228, 228, 228);
+  --red-focused: #ff4e4e;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.logo-image_container {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-image_container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.option {
+  display: flex;
+  gap: 10px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding: 0px 20px;
+  gap: 20px;
+}
+
+.focused {
+  background-color: var(--red-focused);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Table styling */
+.table-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+}
+
+.table {
+  border: 1px solid var(--table-border);
+  border-collapse: collapse;
+}
+
+.table-content {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  border: 1px solid var(--table-border);
+}
+
+.table-cell {
+  border-right: 1px solid var(--table-border);
+  border-left: 1px solid var(--table-border);
+  height: 40px;
+  background-color: white;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+.btnEditar-container,
+.btnEliminar-container {
+  padding: 10px 5px;
+}
+
+.btnEditar,
+.btnEliminar {
+  width: 70px;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btnEditar {
+  background-color: lightgreen;
+}
+.btnEliminar {
+  background-color: var(--red-focused);
+}
+
+th {
+  padding: 0px 5px;
+}
+
+.price,
+.weight {
+  padding: 0px 10px;
+}
+
+.descriptionProduct {
+  text-align: left;
+  padding: 0px 10px;
+}
+
+/* BoxIcon Config */
+.bxs-shopping-bags {
+  color: white;
+}
+
+.bxs-user {
+  color: black;
+}
+
+.bx-paper-plane {
+  color: black;
+}
+
+.bxs-plus-circle {
+  font-size: 32px;
+  color: rgb(69, 69, 252);
+  cursor: pointer;
+}

@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.navbar {
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px var(--side-padding);
+  border-bottom: 1px solid lightgray;
+  padding: 0px 60px;
+}
+
+.navbar-logo {
+  font-size: 12px;
+
+  padding: 0px 5px;
+  background-color: black;
+  color: white;
+}
+
+.navbar-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0px;
+}
+
+.form {
+  border-radius: 0 0 20px 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 500px;
+}
+
+.form-title {
+  border-bottom: 1px solid black;
+  color: black;
+  padding: 30px 10px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 40px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-container input {
+  border: transparent;
+  border-bottom: 1px solid lightgray;
+  outline: none;
+}
+
+.btnContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btnGuardar,
+.btnCancelar {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btnGuardar {
+  background-color: black;
+  color: white;
+  height: 43px;
+}
+.btnCancelar {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+}
+
+.btnGuardar:hover,
+.btnCancelar:hover {
+  padding: 10px 25px;
+  transition: 0.3s ease;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/create.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include ("template/navbar") %>
+    <div class="form-container">
+      <form action="/save" method="POST" class="form">
+        <div class="form-title"><h3>Nuevo Producto</h3></div>
+        <div class="form-content">
+          <div class="input-container">
+            <label>Nombre</label>
+            <input type="text" required="true" name="nombre" id="nombre" />
+          </div>
+          <div class="input-container">
+            <label>Precio</label>
+            <input
+              type="text"
+              required="true"
+              name="precio"
+              id="precio"
+              value="precio"
+            />
+          </div>
+          <div class="input-container">
+            <label>Peso</label>
+            <input type="text" required name="peso" />
+          </div>
+          <div class="input-container">
+            <label>Descripción</label>
+            <input type="text" required name="descripcion" />
+          </div>
+          <div class="input-container">
+            <label>Imagen</label>
+            <input type="text" required name="imagen" />
+          </div>
+          <div class="input-container">
+            <label>Categoría</label>
+            <input type="text" required name="categoria" />
+          </div>
+          <div class="input-container">
+            <label>Cantidad</label>
+            <input type="text" required name="cantidad" />
+          </div>
+          <div class="input-container">
+            <label>Nombre de la categoría</label>
+            <input type="text" required name="nombreCategoria" />
+          </div>
+          <div class="btnContainer">
+            <button type="submit" value="submit" class="btnGuardar">
+              Crear
+            </button>
+            <a class="btnCancelar" href="/dashboard">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
