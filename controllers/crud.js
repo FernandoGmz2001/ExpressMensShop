@@ -200,3 +200,5 @@ exports.home = (req, res) => {
     res.redirect("/login");
   }
 };
+
+console.log("Hola");
