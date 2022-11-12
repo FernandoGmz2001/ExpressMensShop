@@ -50,7 +50,9 @@
 
 .option {
   display: flex;
+  align-items: center;
   gap: 10px;
+  padding: 10px;
 }
 
 .dashboard-content {
@@ -147,20 +149,20 @@ th {
 }
 
 /* BoxIcon Config */
-.bxs-shopping-bags {
-  color: white;
-}
-
-.bxs-user {
-  color: black;
-}
-
-.bx-paper-plane {
-  color: black;
-}
 
 .bxs-plus-circle {
   font-size: 32px;
   color: rgb(69, 69, 252);
   cursor: pointer;
+}
+
+.productUrl {
+  width: 100px;
+  overflow: hidden;
+}
+
+td {
+  max-width: 300px;
+  max-height: 80px;
+  overflow-y: hidden;
 }

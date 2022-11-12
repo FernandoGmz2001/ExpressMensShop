@@ -9,6 +9,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/css/users.css" />
     <title>Document</title>
   </head>
   <body>
@@ -21,17 +22,17 @@
       </div>
       <div class="dashboard-container">
         <div class="sidebar">
-          <div class="products-option option focused">
+          <div class="products-option option">
             <div class="products-image_container image">
               <i class="bx bxs-shopping-bags"></i>
             </div>
-            <a href="/dashboard" class="link link-focused">Productos</a>
+            <a href="/dashboard" class="link">Productos</a>
           </div>
-          <div class="users-option option">
+          <div class="users-option option focused">
             <div class="user-image_container image">
-              <i class="bx bxs-user"></i>
+              <i class="bx bxs-user link-focused"></i>
             </div>
-            <a href="/users" class="link">Usuarios</a>
+            <a href="/users" class="link link-focused">Usuarios</a>
           </div>
           <div class="orders-option option">
             <i class="bx bx-paper-plane"></i>
@@ -43,45 +44,31 @@
           </div>
         </div>
         <div class="dashboard-content">
-          <div class="btnCreate-container">
-            <a href="/create">
+          <!-- <div class="btnCreate-container">
+            <a href="/createUser">
               <i class="bx bxs-plus-circle"></i>
             </a>
-          </div>
+          </div> -->
           <table class="table">
             <thead>
-              <th class="id-product table">Id</th>
+              <!-- <th class="id-user table">Id</th> -->
+              <th class="userId table">Id</th>
               <th class="name table">Nombre</th>
-              <th class="price table">Precio</th>
-              <th class="weight table">Peso</th>
-              <th class="description table">Descripción</th>
-              <th class="productImage table">Imagen</th>
-              <th class="id-category table">Categoría</th>
-              <th class="cuantity table">Cantidad</th>
-              <th class="category-name table">Nomb/Categoría</th>
+              <th class="firstName table">Apellido Paterno</th>
+              <th class="secondName table">Apellido Materno</th>
+              <th class="mail table">Correo</th>
             </thead>
             <tbody>
-              <% results.recordsets[0].forEach((product)=> { %>
+              <% results.recordsets[0].forEach((user)=> { %>
               <tr>
-                <td class="table-cell"><%= product.Id_Producto%></td>
-                <td class="table-cell"><%= product.Nombre %></td>
-                <td class="table-cell">$ <%= product.Precio %></td>
-                <td class="table-cell"><%= product.Peso %></td>
-                <td class="table-cell descriptionProduct">
-                  <%= product.Descripcion %>
-                </td>
-                <td class="table-cell productUrl"><%= product.Imagen %></td>
-                <td class="table-cell"><%= product.Categoria %></td>
-                <td class="table-cell"><%= product.Cantidad %></td>
-                <td class="table-cell"><%= product.NombreCategoria %></td>
-                <td class="btnEditar-container">
-                  <a href="/edit/<%= product.Id_Producto%>" class="btnEditar"
-                    >Editar</a
-                  >
-                </td>
+                <td class="table-cell"><%= user.Id_Usuario%></td>
+                <td class="table-cell"><%= user.Nombre%></td>
+                <td class="table-cell"><%= user.Apellido_Paterno %></td>
+                <td class="table-cell"><%= user.Apellido_Materno%></td>
+                <td class="table-cell"><%= user.Correo%></td>
                 <td class="btnEliminar-container">
                   <a
-                    href="/delete/<%= product.Id_Producto%>"
+                    href="/deleteUser/<%= user.Id_Usuario%>"
                     class="btnEliminar"
                     >Eliminar</a
                   >

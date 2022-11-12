@@ -14,7 +14,24 @@
   <body>
     <%- include ("template/navbar") %>
     <div class="main-container">
-      <h1>Index</h1>
+      <div class="products-container">
+        <% results.recordsets[0].forEach((product)=> { %>
+        <a href="/productPage/<%= product.Id_Producto %>" class="product-link">
+          <div class="product-card">
+            <div class="product-image">
+              <img src="<%= product.Imagen %>" alt="" class="imagen" />
+            </div>
+            <div class="product-content">
+              <p class="product-name"><%= product.Nombre %></p>
+              <p class="product-price">$ <%= product.Precio %></p>
+            </div>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+      <button class="btnCerrarSesion">
+        <a href="logout">Cerrar Sesión</a>
+      </button>
     </div>
   </body>
 </html>

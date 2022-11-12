@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/create.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="/auth" method="POST" class="form">
+        <div class="form-title"><h3>Iniciar sesión</h3></div>
+        <div class="form-content">
+          <div class="input-container">
+            <label>Correo</label>
+            <input type="text" required name="correo" id="correo" />
+          </div>
+          <div class="input-container">
+            <label>Contraseña</label>
+            <input type="password" required name="contraseña" />
+          </div>
+          <% if (error) {%>
+          <p class="error"><%= error %></p>
+          <% } %>
+          <p class="account">No tienes cuenta? <a href="register">Regístrate aquí</a></p>
+            <button type="submit" value="submit" class="btnGuardar">
+              Iniciar Sesión
+            </button>
+            <a class="btnCancelar" href="/">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

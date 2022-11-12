@@ -102,10 +102,23 @@
   border: 1px solid black;
   color: black;
   background-color: white;
+  text-align: center;
 }
 
 .btnGuardar:hover,
 .btnCancelar:hover {
   padding: 10px 25px;
   transition: 0.3s ease;
+}
+
+.account {
+  margin-bottom: 30px;
+}
+
+.account a {
+  color: black;
+}
+
+.error {
+  color: red;
 }

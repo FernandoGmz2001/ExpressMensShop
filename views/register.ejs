@@ -12,54 +12,41 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include ("template/navbar") %>
     <div class="form-container">
-      <form action="/save" method="POST" class="form">
-        <div class="form-title"><h3>Nuevo Producto</h3></div>
+      <form action="/register" method="POST" class="form">
+        <div class="form-title"><h3>Registro</h3></div>
         <div class="form-content">
           <div class="input-container">
             <label>Nombre</label>
-            <input type="text" required="true" name="nombre" id="nombre" />
+            <input type="text" required name="nombre" id="nombre" />
           </div>
           <div class="input-container">
-            <label>Precio</label>
+            <label>Apellido Paterno</label>
             <input
               type="text"
               required="true"
-              name="precio"
+              name="apellido_paterno"
               id="precio"
               value=""
             />
           </div>
           <div class="input-container">
-            <label>Peso</label>
-            <input type="text" required name="peso" />
+            <label>Apellido Materno</label>
+            <input type="text" required name="apellido_materno" />
           </div>
           <div class="input-container">
-            <label>Descripción</label>
-            <input type="text" required name="descripcion" />
+            <label>Correo</label>
+            <input type="text" required name="correo" />
           </div>
           <div class="input-container">
-            <label>Imagen</label>
-            <input type="text" required name="imagen" />
-          </div>
-          <div class="input-container">
-            <label>Categoría</label>
-            <input type="text" required name="categoria" />
-          </div>
-          <div class="input-container">
-            <label>Cantidad</label>
-            <input type="text" required name="cantidad" />
-          </div>
-          <div class="input-container">
-            <label>Nombre de la categoría</label>
-            <input type="text" required name="nombreCategoria" />
+            <label>Contraseña</label>
+            <input type="password" required name="contraseña" />
           </div>
           <div class="btnContainer">
             <button type="submit" value="submit" class="btnGuardar">
-              Crear
+              Registrar
             </button>
-            <a class="btnCancelar" href="/dashboard">Cancelar</a>
+            <a class="btnCancelar" href="/">Cancelar</a>
           </div>
         </div>
       </form>

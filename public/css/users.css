@@ -1,0 +1,8 @@
+.btnEliminar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btnEliminar {
+  width: initial;
+}
