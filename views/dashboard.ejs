@@ -35,33 +35,39 @@
           </div>
           <div class="orders-option option">
             <i class="bx bx-paper-plane"></i>
-            <a href="#" class="link">Pedidos</a>
+            <a href="/orders" class="link">Pedidos</a>
           </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
             <a href="/" class="link">Salir</a>
           </div>
         </div>
+        <div class="btnCreate-container">
+          <a href="/create">
+            <i class="bx bxs-plus-circle"></i>
+          </a>
+        </div>
         <div class="dashboard-content">
-          <div class="btnCreate-container">
-            <a href="/create">
-              <i class="bx bxs-plus-circle"></i>
-            </a>
-          </div>
           <table class="table">
-            <thead>
+            <thead class="thead">
               <th class="id-product table">Id</th>
               <th class="name table">Nombre</th>
               <th class="price table">Precio</th>
               <th class="weight table">Peso</th>
               <th class="description table">Descripción</th>
               <th class="productImage table">Imagen</th>
-              <th class="id-category table">Categoría</th>
+              <th class="id-category table">Id/Categoria</th>
               <th class="cuantity table">Cantidad</th>
-              <th class="category-name table">Nomb/Categoría</th>
+              <th class="grossor table">Grosor</th>
+              <th class="material table">Material</th>
+              <th class="pointsCost table">Costo/Puntos</th>
+              <th class="pointsValue table">Valor/Puntos</th>
+              <th class="proveedor table">Id_Proveedor</th>
+              <th class="marca table">Marca</th>
+              <th class="proveedor table">Nombre/Categoria</th>
             </thead>
-            <tbody>
-              <% results.recordsets[0].forEach((product)=> { %>
+            <tbody class="tbody">
+              <% results.forEach((product)=> { %>
               <tr>
                 <td class="table-cell"><%= product.Id_Producto%></td>
                 <td class="table-cell"><%= product.Nombre %></td>
@@ -71,9 +77,15 @@
                   <%= product.Descripcion %>
                 </td>
                 <td class="table-cell productUrl"><%= product.Imagen %></td>
-                <td class="table-cell"><%= product.Categoria %></td>
+                <td class="table-cell"><%= product.Id_Categoria %></td>
                 <td class="table-cell"><%= product.Cantidad %></td>
-                <td class="table-cell"><%= product.NombreCategoria %></td>
+                <td class="table-cell"><%= product.Grosor %></td>
+                <td class="table-cell"><%= product.Material %></td>
+                <td class="table-cell"><%= product.Costo_Puntos %></td>
+                <td class="table-cell"><%= product.Valor_Puntos %></td>
+                <td class="table-cell"><%= product.Id_Proveedor %></td>
+                <td class="table-cell"><%= product.Marca %></td>
+                <td class="table-cell"><%= product.Nombre_Categoria %></td>
                 <td class="btnEditar-container">
                   <a href="/edit/<%= product.Id_Producto%>" class="btnEditar"
                     >Editar</a
@@ -83,6 +95,7 @@
                   <a
                     href="/delete/<%= product.Id_Producto%>"
                     class="btnEliminar"
+                    onclick="return confirm('Está seguro de eliminar?')"
                     >Eliminar</a
                   >
                 </td>

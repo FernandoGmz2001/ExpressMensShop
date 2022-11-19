@@ -6,32 +6,6 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.navbar {
-  height: 15vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px var(--side-padding);
-  border-bottom: 1px solid lightgray;
-  padding: 0px 60px;
-}
-
-.navbar-logo {
-  font-size: 12px;
-
-  padding: 0px 5px;
-  background-color: black;
-  color: white;
-}
-
-.navbar-account {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
 .form-container {
   width: 100%;
   display: flex;
@@ -121,4 +95,18 @@
 
 .error {
   color: red;
+}
+
+textArea {
+  height: 250px;
+  resize: none;
+  white-space: pre;
+}
+
+textArea:focus {
+  outline: none;
+}
+
+.hidden {
+  display: none;
 }

@@ -28,15 +28,15 @@
             </div>
             <a href="/dashboard" class="link">Productos</a>
           </div>
-          <div class="users-option option focused">
+          <div class="users-option option">
             <div class="user-image_container image">
-              <i class="bx bxs-user link-focused"></i>
+              <i class="bx bxs-user"></i>
             </div>
-            <a href="/users" class="link link-focused">Usuarios</a>
+            <a href="/users" class="link">Usuarios</a>
           </div>
-          <div class="orders-option option">
+          <div class="orders-option option focused">
             <i class="bx bx-paper-plane"></i>
-            <a href="/orders" class="link">Pedidos</a>
+            <a href="/orders" class="link link-focused">Pedidos</a>
           </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
@@ -52,24 +52,28 @@
           <table class="table">
             <thead>
               <!-- <th class="id-user table">Id</th> -->
-              <th class="userId table">Id</th>
-              <th class="name table">Nombre</th>
-              <th class="firstName table">Apellido Paterno</th>
-              <th class="secondName table">Apellido Materno</th>
-              <th class="mail table">Correo</th>
+              <th class="userId table">Id Pedido</th>
+              <th class="name table">Id/Producto</th>
+              <th class="name table">Fecha</th>
+              <th class="firstName table">Correo usuario</th>
+              <th class="name table">Nombre/Producto</th>
+              <th class="name table">Descripcion/Producto</th>
+              <th class="secondName table">Cantidad Pedido</th
             </thead>
             <tbody>
-              <% results.recordsets[0].forEach((user)=> { %>
+              <% results.forEach((pedido)=> { %>
               <tr>
-                <td class="table-cell"><%= user.Id_Usuario%></td>
-                <td class="table-cell"><%= user.Nombre%></td>
-                <td class="table-cell"><%= user.Apellido_Paterno %></td>
-                <td class="table-cell"><%= user.Apellido_Materno%></td>
-                <td class="table-cell"><%= user.Correo%></td>
+                <td class="table-cell"><%= pedido.Id_Pedido%></td>
+                <td class="table-cell"><%= pedido.Id_Producto_Pedido%></td>
+                <td class="table-cell"><%= pedido.Fecha_Pedido%></td>
+
+                <td class="table-cell"><%= pedido.Correo_Usuario %></td>
+                <td class="table-cell"><%= pedido.Cantidad_Pedido%></td>
                 <td class="btnEliminar-container">
                   <a
-                    href="/deleteUser/<%= user.Id_Usuario%>"
+                    href="/deletePedido/<%= pedido.Id_Pedido%>"
                     class="btnEliminar"
+                    onclick="return confirm('Está seguro de eliminar?')"
                     >Eliminar</a
                   >
                 </td>
@@ -79,6 +83,16 @@
           </table>
         </div>
       </div>
+      <form class="form" action="post" method="/countMonthSells">
+        <div class="form-group">
+          <p class="ventasMes">Ventas en el mes: </p>
+          <button class="" type="submit">Contar</button>
+        </div>
+      </form>
     </div>
+    <script>
+
+
+    </script>
   </body>
 </html>

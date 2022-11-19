@@ -33,11 +33,12 @@
           </div>
           <div class="input-container">
             <label>Peso</label>
-            <input type="text" required name="peso" />
+            <input type="text" name="peso" />
           </div>
           <div class="input-container">
             <label>Descripción</label>
-            <input type="text" required name="descripcion" />
+            <textarea name="descripcion" required id=""></textarea>
+            <!-- <input type="text" required name="descripcion" /> -->
           </div>
           <div class="input-container">
             <label>Imagen</label>
@@ -45,15 +46,49 @@
           </div>
           <div class="input-container">
             <label>Categoría</label>
-            <input type="text" required name="categoria" />
+            <select name="id_categoria" required id="id_categoria">
+              <option value="BOL" selected>BOL</option>
+              <option value="CAM">CAM</option>
+              <option value="CAR">CAR</option>
+              <option value="COR">COR</option>
+              <option value="LEN">LEN</option>
+              <option value="MOC">MOC</option>
+              <option value="MON">MON</option>
+              <option value="PAN">PAN</option>
+              <option value="PER">PER</option>
+              <option value="PLA">PLA</option>
+              <option value="PNS">PNS</option>
+              <option value="REL">REL</option>
+              <option value="SHO">SHO</option>
+            </select>
           </div>
           <div class="input-container">
             <label>Cantidad</label>
             <input type="text" required name="cantidad" />
           </div>
           <div class="input-container">
-            <label>Nombre de la categoría</label>
-            <input type="text" required name="nombreCategoria" />
+            <label>Grosor</label>
+            <input type="text" name="grosor" />
+          </div>
+          <div class="input-container">
+            <label>Material</label>
+            <input type="text" name="material" />
+          </div>
+          <div class="input-container">
+            <label>Costo en puntos</label>
+            <input type="text" required name="costo_puntos" />
+          </div>
+          <div class="input-container">
+            <label>Valor en puntos</label>
+            <input type="text" required name="valor_puntos" />
+          </div>
+          <div class="input-container">
+            <label>Id proveedor</label>
+            <input type="text" required name="id_proveedor" />
+          </div>
+          <div class="input-container">
+            <label>Marca</label>
+            <input type="text" required name="marca" />
           </div>
           <div class="btnContainer">
             <button type="submit" value="submit" class="btnGuardar">

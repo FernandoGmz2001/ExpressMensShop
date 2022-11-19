@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/create.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="/payDone" method="POST" class="form">
+        <div class="form-title"><h3>Información de pago</h3></div>
+        <div class="form-content">
+          <input
+            type="text"
+            value="<%= idProducto %>"
+            name="id_producto"
+            class="hidden"
+          />
+          <input
+            type="text"
+            value="<%= correoUsuario %>"
+            name="correo_usuario"
+            class="hidden"
+          />
+          <input
+            type="text"
+            value="<%= cantidadProducto %>"
+            name="cantidad_producto"
+            class="hidden"
+          />
+
+          <div class="input-container">
+            <label>Nombre</label>
+            <input type="text" required name="nombre" id="nombre" />
+          </div>
+          <div class="input-container">
+            <label>Apellido Paterno</label>
+            <input
+              type="text"
+              required="true"
+              name="apellido_paterno"
+              id="precio"
+              value=""
+            />
+          </div>
+          <div class="input-container">
+            <label>Apellido Materno</label>
+            <input type="text" required name="apellido_materno" />
+          </div>
+          <div class="input-container">
+            <label>Número de tarjeta</label>
+            <input type="text" required name="numero_tarjeta" />
+          </div>
+          <div class="input-container">
+            <label>Titular de la tarjeta</label>
+            <input type="text" required name="titular_tarjeta" />
+          </div>
+          <div class="input-container">
+            <label>Teléfono</label>
+            <input type="text" required name="telefono" />
+          </div>
+          <div class="input-container">
+            <label>Direccion</label>
+            <input type="text" required name="direccion" />
+          </div>
+          <div class="input-container">
+            <label>Código postal</label>
+            <input type="text" required name="codigo_postal" />
+          </div>
+          <div class="input-container">
+            <label>Estado</label>
+            <input type="text" required name="estado" />
+          </div>
+          <div class="input-container">
+            <label>Municipio</label>
+            <input type="text" required name="municipio" />
+          </div>
+          <div class="btnContainer">
+            <button
+              type="submit"
+              value="submit"
+              class="btnGuardar"
+              onclick="confirmar()"
+            >
+              Pagar
+            </button>
+            <a class="btnCancelar" href="/">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+      function confirmar() {
+        Swal.fire({
+          icon: "success",
+          title: "Pedido realizado",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        });
+      }
+    </script>
+  </body>
+</html>
