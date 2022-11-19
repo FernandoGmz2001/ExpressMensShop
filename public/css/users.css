@@ -6,3 +6,7 @@
 .btnEliminar {
   width: initial;
 }
+
+.table-cell {
+  padding: 5px;
+}

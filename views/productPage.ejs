@@ -4,9 +4,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/productPage.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    
     <title>Producto</title>
   </head>
   <body>
-    <h1>Esta es la página del producto <%= producto.Id_Producto %></h1>
+    <%- include("template/navbar.ejs") %>
+    <div class="main-container">
+      <div class="product-container">
+        <div class="productImage-container">
+          <img src="<%= producto.Imagen %>" alt="" class="productImage" />
+        </div>
+      </div>
+      <form id="IdProductoForm" method="POST" action="/payInfo">
+        <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
+        <form class="sidebar-right" method="POST" action="/carrito" id="formCarrito">
+          <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
+          <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
+          <div class="sidebar-top">
+            <h2 class="sidebar-title"><%= producto.Nombre %></h2>
+            <p class="sidebar-price">$<%= producto.Precio %></p>
+            <div class="sidebar-time_container">
+              <p class="sidebar-deliveryTime mint">
+                Llega gratis en <span class="bold">3 días</span>
+              </p>
+              <p class="sidebar-devolutionTime mint">Devolución gratis</p>
+              <p>Tienes 30 días desde que lo recibes.</p>
+            </div>
+          </div>
+          <div class="sidebar-bottom">
+            <div class="sidebar-cuantity">
+              <label for="">Cantidad: </label>
+              <select name="cantidad_producto" id="cantidad_producto">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="sidebar-buttons">
+              <button class="btnComprar" form="IdProductoForm">Comprar</button>
+              <button type="submit" class="btnAgregarCarrito" form="formCarrito" onclick="confirmar()">Agregar al carrito</button>
+            </div>
+          </div>
+        </form>
+      </form>
+      </div>
+    <section class="section1" id="section1">
+      <div class="productInfo-container">
+        <div class="characteristics-container">
+          <h3>Características principales</h1>
+            <table class="table">
+            <tbody>
+              <tr><td class="graybg">Marca</td><td><%= producto.Marca%></td></tr>
+              <tr><td class="graybg">Género</td><td>Hombre</td></tr>
+              <tr><td class="graybg">Material principal</td><td><%= producto.Material%></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="description-container">
+          <h3>Descripción</h3>
+          <p><%= producto.Descripcion%></p>
+        </div>
+      </div>
+      <div class="sidebar-right pointsSidebar">
+        <div class="sidebar-top">
+          <h3>Puntos en la compra</h3>
+          <p class="mint points">+<%= producto.Valor_Puntos%></p>
+          <h3>Puntos para comprar este producto</h3>
+          <p class="mint points"> <%= producto.Costo_Puntos %></p>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+      function confirmar(){
+        Swal.fire({
+        icon:'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true})
+      }
+    </script>
+      <%- include ("template/footer") %>
   </body>
 </html>

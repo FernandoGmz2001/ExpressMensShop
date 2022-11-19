@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/cart.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include ("template/navbar") %>
+    <div class="main-dashboard">
+      <div class="dashboard-container">
+        <div class="dashboard-content">
+          <table class="table">
+            <thead class="thead">
+              <th class="cuantity table">Id_Carrito</th>
+              <th class="id-payment table">Id_Producto</th>
+              <th class="userName table">Nombre_Producto</th>
+              <th class="cuantity table">Cantidad</th>
+              <th class="cuantity table">Correo</th>
+            </thead>
+            <tbody class="tbody">
+              <% cartProducts.forEach((product) =>{ %>
+              <tr>
+                <td class="table-cell"><%= product.Id_Carrito%></td>
+                <td class="table-cell"><%= product.Id_Producto%></td>
+                <td class="table-cell"><%= product.Nombre_Producto%></td>
+                <td class="table-cell"><%= product.Cantidad_Producto%></td>
+                <td class="table-cell"><%= correoUsuario%></td>
+                <td class="btnEliminar-container">
+                  <a
+                    href="/deleteCartProduct/<%= product.Id_Carrito %>"
+                    class="btnEliminar"
+                    >Eliminar</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

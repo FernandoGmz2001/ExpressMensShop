@@ -1,7 +1,6 @@
 const express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
-var cors = require("cors");
 const sql = require("mssql");
 var request = new sql.Request();
 const conexion = require("./database/db");
@@ -11,8 +10,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", require("./router"));
-
-app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
 

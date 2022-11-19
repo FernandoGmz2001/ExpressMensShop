@@ -1,0 +1,23 @@
+.footer {
+  height: 25vh;
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.btnCerrarSesion {
+  padding: 10px 20px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+}
+
+.btnCerrarSesion a {
+  color: white;
+  text-decoration: none;
+}

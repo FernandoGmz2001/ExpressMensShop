@@ -22,7 +22,7 @@
           type="text"
           hidden
         />
-        <div class="form-title"><h3>Editar producto</h3></div>
+        <div class="form-title"><h3>Editar Producto</h3></div>
         <div class="form-content">
           <div class="input-container">
             <label>Nombre</label>
@@ -31,7 +31,7 @@
               required="true"
               name="nombre"
               id="nombre"
-              value="<%= producto.Nombre %> "
+              value="<%= producto.Nombre %>"
             />
           </div>
           <div class="input-container">
@@ -46,21 +46,14 @@
           </div>
           <div class="input-container">
             <label>Peso</label>
-            <input
-              type="text"
-              required
-              name="peso"
-              value="<%= producto.Peso %>"
-            />
+            <input type="text" name="peso" value="<%= producto.Peso %>" />
           </div>
           <div class="input-container">
             <label>Descripción</label>
-            <input
-              type="text"
-              required
-              name="descripcion"
-              value="<%= producto.Descripcion %>"
-            />
+            <textarea name="descripcion" required id="">
+<%= producto.Descripcion %>"</textarea
+            >
+            <!-- <input type="text" required name="descripcion" /> -->
           </div>
           <div class="input-container">
             <label>Imagen</label>
@@ -73,12 +66,26 @@
           </div>
           <div class="input-container">
             <label>Categoría</label>
-            <input
-              type="text"
+            <select
+              name="id_categoria"
               required
-              name="categoria"
-              value="<%= producto.Categoria %>"
-            />
+              id="id_categoria"
+              value="<%= producto.Id_Categoria %>"
+            >
+              <option value="BOL" selected>BOL</option>
+              <option value="CAM">CAM</option>
+              <option value="CAR">CAR</option>
+              <option value="COR">COR</option>
+              <option value="LEN">LEN</option>
+              <option value="MOC">MOC</option>
+              <option value="MON">MON</option>
+              <option value="PAN">PAN</option>
+              <option value="PER">PER</option>
+              <option value="PLA">PLA</option>
+              <option value="PNS">PNS</option>
+              <option value="REL">REL</option>
+              <option value="SHO">SHO</option>
+            </select>
           </div>
           <div class="input-container">
             <label>Cantidad</label>
@@ -90,12 +97,51 @@
             />
           </div>
           <div class="input-container">
-            <label>Nombre de la categoría</label>
+            <label>Grosor</label>
+            <input type="text" name="grosor" value="<%= producto.Grosor %>" />
+          </div>
+          <div class="input-container">
+            <label>Material</label>
+            <input
+              type="text"
+              name="material"
+              value="<%= producto.Material %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Costo en puntos</label>
             <input
               type="text"
               required
-              name="nombreCategoria"
-              value="<%= producto.NombreCategoria %>"
+              name="costo_puntos"
+              value="<%= producto.Costo_Puntos %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Valor en puntos</label>
+            <input
+              type="text"
+              required
+              name="valor_puntos"
+              value="<%= producto.Valor_Puntos %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Id proveedor</label>
+            <input
+              type="text"
+              required
+              name="id_proveedor"
+              value="<%= producto.Id_Proveedor %>"
+            />
+          </div>
+          <div class="input-container">
+            <label>Marca</label>
+            <input
+              type="text"
+              required
+              name="marca"
+              value="<%= producto.Marca %>"
             />
           </div>
           <div class="btnContainer">
