@@ -10,3 +10,25 @@
 .table-cell {
   padding: 5px;
 }
+
+.hidden {
+  display: none;
+}
+
+.storedProcedures-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bxs-user {
+  color: black;
+}

@@ -2,7 +2,7 @@ const sql = require("mssql");
 const config = {
   user: "Fernando",
   password: "ferpassword",
-  database: "PruebaTienda",
+  database: "PruebaTiendaCasiFinal",
   server: "localhost",
   options: {
     trustServerCertificate: true, // change to true for local dev / self-signed certs

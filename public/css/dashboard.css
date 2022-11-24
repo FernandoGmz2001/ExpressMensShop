@@ -9,6 +9,7 @@
 :root {
   --table-border: rgb(228, 228, 228);
   --red-focused: #ff4e4e;
+  --focused: #ffffff;
 }
 
 /* Main Dashboard */
@@ -33,12 +34,15 @@
 .logo-container {
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
 
 .logo-image_container {
-  width: 25px;
+  width: 100px;
+  height: 30px;
+  margin-right: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,33 +62,37 @@
 .dashboard-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 90%;
+  height: 300px;
   overflow-x: scroll;
   padding: 0px 20px;
   gap: 20px;
 }
 
 .focused {
-  background-color: var(--red-focused);
+  background-color: white;
   padding: 10px;
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  color: white;
-  font-weight: bold;
-}
-
-.link {
   color: black;
-  text-decoration: none;
+  font-weight: bold;
 }
 
 .link-focused {
   color: white;
   text-decoration: none;
 }
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.link.link-focused {
+  color: black;
+}
 
 /* Table styling */
+
 .table-container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -138,8 +146,8 @@
 /* BoxIcon Config */
 
 .bxs-plus-circle {
-  font-size: 32px;
-  color: rgb(69, 69, 252);
+  font-size: 40px;
+  color: black;
   cursor: pointer;
 }
 
@@ -148,24 +156,38 @@
   overflow: hidden;
 }
 
+thead {
+  border: 1px solid var(--table-border);
+}
+
+.thead-tr {
+  position: sticky;
+  background-color: white;
+  top: -0.5px;
+  border: 1px solid var(--table-border);
+}
+
 th {
   padding: 0px 5px;
+  padding: 15px;
+
+  border: 1px solid var(--table-border);
 }
 td {
   max-width: 300px;
   max-height: 80px;
+  padding: 15px;
   /* overflow: hidden; */
 }
 
 tr {
-  overflow: hidden;
   white-space: nowrap;
 }
 
 .tbody {
   height: 100px;
 }
-.table {
+table {
   border: 1px solid var(--table-border);
   border-collapse: collapse;
 }
@@ -183,12 +205,58 @@ tr {
   overflow: hidden;
 }
 
-.btnCreate-container {
-  position: relative;
+.fechaInput {
+  border: transparent;
+  border-bottom: 1px solid lightgray;
 }
 
-.btnCreate-container a {
-  position: absolute;
-  left: 20px;
-  top: -30px;
+.fechaInput:focus {
+  outline: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.btnCapturar {
+  background-color: black;
+  color: white;
+  border: transparent;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sellForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.productsCuantity {
+  padding: 0px 10px;
+}
+
+.searchProduct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.idProduct-container {
+  overflow-x: scroll;
+  margin-left: 200px;
+}
+
+.filterProduct td {
+  overflow: hidden;
+}
+
+.id_producto {
+  border: transparent;
+  border-bottom: 1px solid lightgray;
+}
+
+.id_producto:focus {
+  outline: none;
+  border-bottom: 1px solid lightgray;
 }

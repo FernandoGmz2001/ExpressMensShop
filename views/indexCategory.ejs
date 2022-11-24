@@ -14,7 +14,7 @@
   </head>
   <body>
     <%- include ("template/navbar") %>
-    <div class="main-container">
+    <div class="main-containerFilter">
       <div class="header">
         <div class="currentCategory">
           <p>Hombres</p>
@@ -41,10 +41,25 @@
 
         <div class="products-container">
           <% results.forEach((product)=> { %>
-          <a
-            href="/productPage/<%= product.Id_Producto %>"
-            class="product-link"
-          >
+            <% if (product.Cantidad <= 0) {%>
+              <a
+                href="/productPage/<%= product.Id_Producto %>"
+                class="product-link unavailable"
+              >
+            <div class="product-card unavailable">
+              <div class="product-image">
+                <img src="<%= product.Imagen %>" alt="" class="imagen" />
+              </div>
+              <div class="product-content">
+                <p class="product-name"><%= product.Nombre %></p>
+                <p class="product-price">$ <%= product.Precio %></p>
+                <p class="product-sellOut">Agotado</p>
+              </div>
+              <% }else { %>
+                <a
+                href="/productPage/<%= product.Id_Producto %>"
+                class="product-link"
+              >
             <div class="product-card">
               <div class="product-image">
                 <img src="<%= product.Imagen %>" alt="" class="imagen" />
@@ -52,7 +67,10 @@
               <div class="product-content">
                 <p class="product-name"><%= product.Nombre %></p>
                 <p class="product-price">$ <%= product.Precio %></p>
+                <p class="product-send">Envío gratis</p>
               </div>
+     
+              <% } %>
             </div>
           </a>
           <% }) %>

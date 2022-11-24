@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/users.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main-dashboard">
+      <div class="logo-container">
+        <div class="logo-image_container">
+          <a href="/">
+            <img
+              class="logo-image"
+              src="/resources/logo-definitivo.png"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+      <div class="dashboard-container">
+        <div class="sidebar">
+          <div class="products-option option">
+            <div class="products-image_container image">
+              <i class="bx bxs-shopping-bags"></i>
+            </div>
+            <a href="/dashboard" class="link">Productos</a>
+          </div>
+          <div class="users-option option">
+            <div class="user-image_container image">
+              <i class="bx bxs-user"></i>
+            </div>
+            <a href="/users" class="link">Usuarios</a>
+          </div>
+          <div class="orders-option option">
+            <i class="bx bx-paper-plane"></i>
+            <a href="/orders" class="link">Pedidos</a>
+          </div>
+          <div class="orders-option option focused">
+            <i class="bx bxs-cog"></i>
+            <a href="/storedProcedures" class="link link-focused"
+              >Stored Procedures</a
+            >
+          </div>
+          <div class="exit-option option">
+            <i class="bx bxs-exit"></i>
+            <a href="/" class="link">Salir</a>
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <!-- <form action="/storedProcedures" method="post">
+            <label for="">Mostrar ventas en la fecha:</label>
+            <input
+              type="text"
+              class="fechaInput"
+              placeholder="2022-11-18"
+              name="dateInput"
+            />
+            <button class="btnCapturar" type="submit">Capturar</button>
+          </form> -->
+          <!-- <div class="btnCreate-container">
+            <a href="/createUser">
+              <i class="bx bxs-plus-circle"></i>
+            </a>
+          </div> -->
+          <table class="table">
+            <thead>
+              <!-- <th class="id-user table">Id</th> -->
+              <th class="userId table">Ventas en este mes</th>
+              <th class="name table">
+                <form action="/storedProcedures" method="post" class="sellForm">
+                  <label for="">Mostrar ventas en la fecha:</label>
+                  <input
+                    type="text"
+                    class="fechaInput"
+                    placeholder="2022-11-18"
+                    name="dateInput"
+                  />
+                  <button class="btnCapturar" type="submit">Capturar</button>
+                </form>
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-cell"><%= results%></td>
+                <td class="table-cell"><%= results2%></td>
+                <!-- <td class="table-cell"><%#= cantidadProductos%></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="storedProcedures-container"></div>
+    </div>
+  </body>
+  <script src="js/inputDate.js"></script>
+</html>

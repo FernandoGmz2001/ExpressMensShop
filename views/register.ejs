@@ -4,52 +4,59 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/create.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>Main page</title>
   </head>
   <body>
-    <div class="form-container">
-      <form action="/register" method="POST" class="form">
-        <div class="form-title"><h3>Registro</h3></div>
-        <div class="form-content">
-          <div class="input-container">
-            <label>Nombre</label>
-            <input type="text" required name="nombre" id="nombre" />
+    <main class="main">
+      <div class="login-container">
+        <form class="login-content" action="/register" method="POST">
+          <div class="login-header">
+            <h1>Regístrate</h1>
           </div>
-          <div class="input-container">
-            <label>Apellido Paterno</label>
-            <input
-              type="text"
-              required="true"
-              name="apellido_paterno"
-              id="precio"
-              value=""
-            />
+          <div class="form-group">
+            <label for="">Nombre</label>
+            <input type="text" name="nombre" />
           </div>
-          <div class="input-container">
-            <label>Apellido Materno</label>
-            <input type="text" required name="apellido_materno" />
+          <div class="form-group">
+            <label for="">Apellido Paterno</label>
+            <input type="text" name="apellido_paterno" />
           </div>
-          <div class="input-container">
-            <label>Correo</label>
-            <input type="text" required name="correo" />
+          <div class="form-group">
+            <label for="">Apellido Materno</label>
+            <input type="text" name="apellido_materno" />
           </div>
-          <div class="input-container">
-            <label>Contraseña</label>
-            <input type="password" required name="contraseña" />
+          <div class="form-group">
+            <label for="">Correo</label>
+            <input type="email" name="correo" />
           </div>
-          <div class="btnContainer">
-            <button type="submit" value="submit" class="btnGuardar">
-              Registrar
+          <div class="form-group">
+            <label for="">Contraseña</label>
+            <input type="password" name="contraseña" />
+          </div>
+          <div class="form-group">
+            <button class="btnIniciarSesion" type="submit">Regístrate</button>
+          </div>
+          <div class="form-group">
+            <button class="btnCancelar" type="submit">
+              <a href="/">Cancelar</a>
             </button>
-            <a class="btnCancelar" href="/">Cancelar</a>
           </div>
-        </div>
-      </form>
-    </div>
+          <div class="form-group account">
+            <p class="noTienesCuenta">
+              Ya tienes cuenta?
+              <a href="login" class="accountState">Inicia sesión</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="login-image-container">
+        <img
+          src="https://images.unsplash.com/photo-1516663713099-37eb6d60c825?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt=""
+          class="login-image"
+        />
+      </div>
+    </main>
   </body>
 </html>

@@ -10,6 +10,7 @@
     <title>Producto</title>
   </head>
   <body>
+
     <%- include("template/navbar.ejs") %>
     <div class="main-container">
       <div class="product-container">
@@ -17,11 +18,16 @@
           <img src="<%= producto.Imagen %>" alt="" class="productImage" />
         </div>
       </div>
+    <form class="sidebar-right" method="POST" action="/carrito" id="formCarrito" class="hidden">
+      <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
+      <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
+      <input type="text" value="3" name="cantidad_producto" class="hidden">
+      <input type="text" value="<%= producto.Imagen %>" name="imagen_producto" class="hidden">
+      <input type="text" value="<%= producto.Precio %>" name="precio_producto" class="hidden">
+    </form>
       <form id="IdProductoForm" method="POST" action="/payInfo">
+            <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
         <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
-        <form class="sidebar-right" method="POST" action="/carrito" id="formCarrito">
-          <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
-          <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
           <div class="sidebar-top">
             <h2 class="sidebar-title"><%= producto.Nombre %></h2>
             <p class="sidebar-price">$<%= producto.Precio %></p>
@@ -50,7 +56,6 @@
             </div>
           </div>
         </form>
-      </form>
       </div>
     <section class="section1" id="section1">
       <div class="productInfo-container">

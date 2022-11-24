@@ -19,11 +19,15 @@
 
 .product-container {
   width: 70%;
+  display: flex;
+  justify-content: center;
 }
 
 .productImage-container {
   display: flex;
   justify-content: center;
+  width: 500px;
+  height: 500px;
 }
 
 .sidebar-right,
@@ -97,7 +101,6 @@
 }
 
 .section1 {
-  height: 100vh;
   padding: 20px 60px;
   display: flex;
 }
@@ -138,5 +141,6 @@ td {
   display: none;
 }
 
-#IdProductoForm {
+#formCarrito {
+  display: none;
 }

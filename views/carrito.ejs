@@ -13,38 +13,48 @@
   </head>
   <body>
     <%- include ("template/navbar") %>
-    <div class="main-dashboard">
-      <div class="dashboard-container">
-        <div class="dashboard-content">
-          <table class="table">
-            <thead class="thead">
-              <th class="cuantity table">Id_Carrito</th>
-              <th class="id-payment table">Id_Producto</th>
-              <th class="userName table">Nombre_Producto</th>
-              <th class="cuantity table">Cantidad</th>
-              <th class="cuantity table">Correo</th>
-            </thead>
-            <tbody class="tbody">
-              <% cartProducts.forEach((product) =>{ %>
-              <tr>
-                <td class="table-cell"><%= product.Id_Carrito%></td>
-                <td class="table-cell"><%= product.Id_Producto%></td>
-                <td class="table-cell"><%= product.Nombre_Producto%></td>
-                <td class="table-cell"><%= product.Cantidad_Producto%></td>
-                <td class="table-cell"><%= correoUsuario%></td>
-                <td class="btnEliminar-container">
-                  <a
-                    href="/deleteCartProduct/<%= product.Id_Carrito %>"
-                    class="btnEliminar"
-                    >Eliminar</a
-                  >
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
+    <div class="main-container">
+      <% if (cartProducts.length == 0) {%>
+        <div class="alone-container">
+          <p class="alone">WOW, ESTÁ BASTANTE SOLO POR AQUÍ...</p>
         </div>
+      <%}%>
+    <% cartProducts.forEach((product) =>{ %>
+        
+  <form class="product-container" method="POST" action="/payInfo" >
+    <div class="product-card ">
+      <div class="product-image">
+        <img src="<%= product.Imagen_Producto %>" alt="" class="image" />
       </div>
+      <div class="product-content">
+        <p class="product-name">
+        <a
+        href="/productPage/<%= product.Id_Producto %>"
+        class="product-link"
+      >
+          <%= product.Nombre_Producto %></p> </a>
+        <p class="product-price">$ <%= product.Precio_Producto %></p>
+        <p class="product-send">Envío gratis</p>
+        <div class="container">
+          <input type="text" class="hidden" value="<%=product.Id_Producto%>" name="id_producto">
+          <label for="">Cantidad</label>
+          <select name="cantidad_producto" id="">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>  
     </div>
+  <div class="buy-buttons">
+    <button class="btnComprar">Comprar</button>
+    <a href="/deleteCartProduct/<%= product.Id_Carrito %>" class="btnEliminar">Eliminar</a>
+  </div>
+  </form>
+ 
+    <% }) %>
+     
   </body>
 </html>
