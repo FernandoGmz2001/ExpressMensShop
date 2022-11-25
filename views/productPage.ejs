@@ -27,6 +27,7 @@
     </form>
       <form id="IdProductoForm" method="POST" action="/payInfo">
             <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
+            <input type="text" value="<%= producto.Precio %>" name="precio_producto" class="hidden">
         <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
           <div class="sidebar-top">
             <h2 class="sidebar-title"><%= producto.Nombre %></h2>

@@ -73,6 +73,8 @@ router.get("/countMonthSells", (req, res) => {
 router.post("/payInfo", (req, res) => {
   const id_producto = req.body.id_producto;
   const cantidad_producto = req.body.cantidad_producto;
+  const precio = req.body.precio_producto;
+  const precio_final = cantidad_producto * precio;
   console.log(
     `id_producto: ${id_producto}`,
     `cantidad_producto: ${cantidad_producto}`
@@ -81,6 +83,8 @@ router.post("/payInfo", (req, res) => {
     idProducto: id_producto,
     correoUsuario: crud.corr,
     cantidadProducto: cantidad_producto,
+    precioProducto: precio,
+    precioFinal: precio_final,
   });
 });
 
@@ -107,7 +111,7 @@ router.post("/payDone", (req, res) => {
             } else {
               setTimeout(() => {
                 res.redirect("/");
-              }, 1000);
+              }, 3000);
             }
           });
         }
@@ -234,26 +238,6 @@ router.get("/payInfo", (req, res) => {
 });
 router.get("/orders", (req, res) => {
   res.render("orders");
-});
-router.get("/account", (req, res) => {
-  var consulta = `SELECT * FROM Usuarios WHERE Correo = '${crud.corr}'`;
-  request.query(consulta, (err, results) => {
-    if (err) {
-      throw err;
-    } else {
-      const Usuario = results.recordset[0];
-      console.log(`$Usuario linea 245`);
-
-      let Nombre = Usuario.Nombre;
-      let Correo = Usuario.Correo;
-      let Puntos = Usuario.Puntos;
-      res.render("account", {
-        Nombre: Nombre,
-        Correo: Correo,
-        Puntos: Puntos,
-      });
-    }
-  });
 });
 
 const crud = require("./controllers/crud");
