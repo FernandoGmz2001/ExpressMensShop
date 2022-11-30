@@ -52,7 +52,7 @@
           </div>
           <div class="orders-option option">
             <i class="bx bxs-cog"></i>
-            <a href="/storedProcedures" class="link">Stored Procedures</a>
+            <a href="/storedProcedures" class="link">Reportes</a>
           </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
@@ -125,7 +125,7 @@
       <div class="searchProduct">
         <div class="idProduct-container">
           <form>
-            <label for="">Ingresa el Id de un producto:</label>
+            <label for="">Ingresa el nombre de un producto:</label>
             <input type="text" name="id_producto" class="id_producto" />
             <button type="submit" class="btnCapturarId btnCapturar">Buscar</button>
           </form>
@@ -149,9 +149,11 @@
               <th class="proveedor table"></th>
               <th class="proveedor table"></th>
             </thead>
-            <tbody>
-              <tr class="filterProduct">
-                <td class="Id"></td>
+            <tbody class="tbody2">
+              <% if(!results3 == '') {%>
+                <% results3.forEach((product)=> { %>
+                  <tr class="filterProduct">z
+                <td class="Id"><%= Id_Producto %></td>
                 <td class="Nombre"></td>
                 <td class="Precio"></td>
                 <td class="Peso"></td>
@@ -178,6 +180,8 @@
                   >
                 </td>
               </tr>
+              <% }) %>
+              <% }%>
             </tbody>
           </table>
   <script src="/js/searchID.js"></script>

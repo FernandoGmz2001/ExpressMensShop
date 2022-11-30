@@ -8,55 +8,70 @@ var request = new sql.Request();
 
 // Mostrar dashboard
 router.get("/dashboard", (req, res) => {
-  request.query("SELECT * FROM vw_ProductosCategorias1", (err, results) => {
-    if (err) {
-      throw err;
-    } else {
-      var consulta = `EXEC sp_CantidadProductos`;
-      request.query(consulta, (err, results2) => {
-        var consulta2 = `SELECT * FROM Productos WHERE Id_Producto='9'`;
-        request.query(consulta2, (err, results3) => {
-          // console.log(results3);
-          res.render("dashboard", {
-            results: results.recordsets[0],
-            results2: results2.recordset[0].CantidadProductos,
+  request.query(
+    "SELECT * FROM vw_ProductosCategorias1 ORDER BY Id_Producto ASC",
+    (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        var consulta = `EXEC sp_CantidadProductos`;
+        request.query(consulta, (err, results2) => {
+          var consulta2 = `SELECT * FROM Productos WHERE Id_Producto='9'`;
+          request.query(consulta2, (err, results3) => {
+            res.render("dashboard", {
+              results: results.recordsets[0],
+              results3: "",
+              results2: results2.recordset[0].CantidadProductos,
+            });
           });
         });
-        // res.render("dashboard", {
-        //   results: results.recordsets[0],
-        //   results2: results2.recordset[0].CantidadProductos,
-        // });
-      });
+      }
     }
-  });
+  );
 });
+
+// router.post("/sendID", (req, res) => {
+//   const id_producto = req.body.Id;
+//   var consulta2 = `SELECT * FROM vw_ProductosCategorias1 WHERE Id_Producto='${id_producto}'`;
+//   // var consulta2 = `SELECT * FROM vw_ProductosCategorias1 WHERE Id_Producto='${id_producto}'`;
+
+//   request.query(consulta2, (err, results3) => {
+//     if (err) {
+//       throw err;
+//     } else {
+//       res.json({ results3: results3.recordset[0] });
+//     }
+//   });
+// });
 
 router.post("/sendID", (req, res) => {
   const id_producto = req.body.Id;
-  var consulta2 = `SELECT * FROM vw_ProductosCategorias1 WHERE Id_Producto='${id_producto}'`;
-  console.log(id_producto);
-  console.log(consulta2);
+  var consulta2 = `SELECT * FROM vw_ProductosCategorias1 WHERE Nombre LIKE '%' + '${id_producto}' + '%'`;
+  // var consulta2 = `SELECT * FROM vw_ProductosCategorias1 WHERE Id_Producto='${id_producto}'`;
 
   request.query(consulta2, (err, results3) => {
     if (err) {
       throw err;
     } else {
-      console.log(results3);
-      res.json({ results3: results3.recordset[0] });
+      // console.log(results3.recordset);
+      res.json({ results3: results3.recordset });
     }
   });
 });
 
 router.get("/orders", (req, res) => {
-  request.query("SELECT * FROM vw_PedidosProductos", (err, results) => {
-    if (err) {
-      throw err;
-    } else {
-      res.render("orders", {
-        results: results.recordsets[0],
-      });
+  request.query(
+    "SELECT * FROM vw_PedidosProductos ORDER BY Id_Pedido",
+    (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        res.render("orders", {
+          results: results.recordsets[0],
+        });
+      }
     }
-  });
+  );
 });
 
 router.get("/countMonthSells", (req, res) => {
@@ -70,55 +85,146 @@ router.get("/countMonthSells", (req, res) => {
   });
 });
 
-router.post("/payInfo", (req, res) => {
+router.post("/compraIndividual", (req, res) => {
   const id_producto = req.body.id_producto;
   const cantidad_producto = req.body.cantidad_producto;
-  const precio = req.body.precio_producto;
-  const precio_final = cantidad_producto * precio;
-  console.log(
-    `id_producto: ${id_producto}`,
-    `cantidad_producto: ${cantidad_producto}`
-  );
-  res.render("payInfo", {
-    idProducto: id_producto,
-    correoUsuario: crud.corr,
-    cantidadProducto: cantidad_producto,
-    precioProducto: precio,
-    precioFinal: precio_final,
+  const correo = crud.corr;
+  var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${id_producto}','${correo}','${cantidad_producto}','${fecha}','${idUsuario}')`;
+  request.query(consulta, (err, results) => {
+    if (err) {
+      throw err;
+    } else {
+      setTimeout(() => {
+        // res.render("carrito")
+        res.redirect("/carrito");
+      }, 1000);
+    }
+  });
+});
+
+router.get("/IdUsuario", (req, res) => {
+  const correo_usuario = crud.corr;
+  var conocerIdUsuario = `SELECT Id_Usuario,Correo FROM Usuarios WHERE Correo = '${correo_usuario}'`;
+  request.query(conocerIdUsuario, (err, results) => {
+    if (err) {
+      throw err;
+    } else {
+      res.json({ idUsuarioDevuelto: results.recordset[0].Id_Usuario });
+    }
   });
 });
 
 router.post("/payDone", (req, res) => {
-  const id_producto = req.body.id_producto;
-  const correo_usuario = req.body.correo_usuario;
-  const cantidad_pedido = req.body.cantidad_producto;
-
-  var conocerIdUsuario = `SELECT Id_Usuario FROM Usuarios WHERE Correo = '${correo_usuario}'`;
-  request.query(conocerIdUsuario, (err, idUsuarioDevuelto) => {
-    if (err) {
-      throw err;
-    } else {
-      const idUsuarioEncontrado = idUsuarioDevuelto.recordset[0].Id_Usuario;
-      var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${id_producto}','${correo_usuario}','${cantidad_pedido}','${fecha}','${idUsuarioEncontrado}')`;
-      var consulta2 = `DELETE FROM Carrito Where Id_Producto = '${id_producto}'`;
-      request.query(consulta, (err, results) => {
-        if (err) {
-          throw err;
-        } else {
-          request.query(consulta2, (err, results) => {
-            if (err) {
-              throw err;
-            } else {
-              setTimeout(() => {
-                res.redirect("/");
-              }, 3000);
-            }
-          });
-        }
-      });
-    }
+  const arregloProductos = req.body.arregloProductos;
+  const correo_usuario = crud.corr;
+  console.log(arregloProductos);
+  arregloProductos.forEach((product) => {
+    const { id, precio, cantidad, idUsuario } = product;
+    var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${id}','${correo_usuario}','${cantidad}','${fecha}','${idUsuario}')`;
+    request.query(consulta, (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        var deleteCart = `DELETE FROM Carrito WHERE Correo_Usuario='${correo_usuario}'`;
+        request.query(deleteCart, (err, results) => {
+          if (err) {
+            throw err;
+          } else {
+            // setTimeout(() => {
+            //   // res.send({ redirectTo: "/" });
+            // }, 1000);
+          }
+        });
+      }
+    });
   });
+  setTimeout(() => {
+    res.send({ redirectTo: "/" });
+  }, 1000);
 });
+
+router.post("/payDoneMultiple", (req, res) => {
+  const longitudArreglo = req.body.longitudArreglo;
+  const arregloProductos = req.body.arregloProductos;
+  console.log(`La longitud del arreglo es ${longitudArreglo}`);
+  const correo_usuario = crud.corr;
+  for (let i = 0; i < longitudArreglo; i++) {
+    console.log(arregloProductos[i]);
+    var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${arregloProductos[i].id}','${correo_usuario}','${arregloProductos[i].cantidad}','${fecha}','${arregloProductos[i].idUsuario}')`;
+    request.query(consulta, (err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        var deleteCart = `DELETE FROM Carrito WHERE Correo_Usuario='${correo_usuario}'`;
+        request.query(deleteCart, (err, results) => {
+          if (err) {
+            throw err;
+          }
+        });
+      }
+    });
+    if (i == longitudArreglo - 1) {
+      setTimeout(() => {
+        res.send({ redirectTo: "/" });
+      }, 2000);
+    }
+  }
+});
+
+// router.post("/payDoneIndividual", (req, res) => {
+//   const correo_usuario = crud.corr;
+//   console.log(arregloProductos);
+//   arregloProductos.forEach((product) => {
+//     const { id, precio, cantidad, idUsuario } = product;
+//     var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${id}','${correo_usuario}','${cantidad}','${fecha}','${idUsuario}')`;
+//     request.query(consulta, (err, results) => {
+//       if (err) {
+//         throw err;
+//       } else {
+//         var deleteCart = `DELETE FROM Carrito WHERE Correo_Usuario='${correo_usuario}'`;
+//         request.query(deleteCart, (err, results) => {
+//           if (err) {
+//             throw err;
+//           } else {
+//             res.send({ redirectTo: "/" });
+//           }
+//         });
+//       }
+//     });
+//   });
+// });
+
+// router.post("/payDone", (req, res) => {
+//   const id_producto = req.body.id_producto;
+//   const correo_usuario = req.body.correo_usuario;
+//   const cantidad_pedido = req.body.cantidad_producto;
+
+//   var conocerIdUsuario = `SELECT Id_Usuario FROM Usuarios WHERE Correo = '${correo_usuario}'`;
+//   request.query(conocerIdUsuario, (err, idUsuarioDevuelto) => {
+//     if (err) {
+//       throw err;
+//     } else {
+//       const idUsuarioEncontrado = idUsuarioDevuelto.recordset[0].Id_Usuario;
+//       var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${id_producto}','${correo_usuario}','${cantidad_pedido}','${fecha}','${idUsuarioEncontrado}')`;
+//       var consulta2 = `DELETE FROM Carrito Where Id_Producto = '${id_producto}'`;
+//       request.query(consulta, (err, results) => {
+//         if (err) {
+//           throw err;
+//         } else {
+//           request.query(consulta2, (err, results) => {
+//             if (err) {
+//               throw err;
+//             } else {
+//               setTimeout(() => {
+//                 res.redirect("/");
+//               }, 3000);
+//             }
+//           });
+//         }
+//       });
+//     }
+//   });
+// });
 
 router.get("/storedProcedures", (req, res) => {
   var consulta = "EXEC ContarVentas";
@@ -178,7 +284,7 @@ router.post("/carrito", (req, res) => {
     } else {
       setTimeout(() => {
         // res.render("carrito")
-        res.redirect(req.get("referer"));
+        res.redirect("/carrito");
       }, 1000);
     }
   });
@@ -243,6 +349,7 @@ router.get("/orders", (req, res) => {
 const crud = require("./controllers/crud");
 const { fechaConvertida, fecha } = require("./public/js/actualTime");
 const { partirFecha } = require("./public/js/sliceDate");
+const { query, response } = require("express");
 router.post("/save", crud.save);
 router.get("/edit/:id", crud.edit);
 router.post("/update", crud.update);

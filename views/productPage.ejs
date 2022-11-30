@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/productPage.css" />
     <link rel="stylesheet" href="/css/footer.css" />
-    
+
     <title>Producto</title>
   </head>
   <body>
-
     <%- include("template/navbar.ejs") %>
     <div class="main-container">
       <div class="product-container">
@@ -18,55 +17,117 @@
           <img src="<%= producto.Imagen %>" alt="" class="productImage" />
         </div>
       </div>
-    <form class="sidebar-right" method="POST" action="/carrito" id="formCarrito" class="hidden">
-      <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
-      <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
-      <input type="text" value="3" name="cantidad_producto" class="hidden">
-      <input type="text" value="<%= producto.Imagen %>" name="imagen_producto" class="hidden">
-      <input type="text" value="<%= producto.Precio %>" name="precio_producto" class="hidden">
-    </form>
-      <form id="IdProductoForm" method="POST" action="/payInfo">
-            <input type="text" value="<%= producto.Id_Producto %>" name="id_producto" class="hidden">
-            <input type="text" value="<%= producto.Precio %>" name="precio_producto" class="hidden">
-        <input type="text" value="<%= producto.Nombre %>" name="nombre" class="hidden">
-          <div class="sidebar-top">
-            <h2 class="sidebar-title"><%= producto.Nombre %></h2>
-            <p class="sidebar-price">$<%= producto.Precio %></p>
-            <div class="sidebar-time_container">
-              <p class="sidebar-deliveryTime mint">
-                Llega gratis en <span class="bold">3 días</span>
-              </p>
-              <p class="sidebar-devolutionTime mint">Devolución gratis</p>
-              <p>Tienes 30 días desde que lo recibes.</p>
-            </div>
+      <form
+        class="sidebar-right"
+        method="POST"
+        action="/carrito"
+        id="formCarrito"
+        class="hidden"
+      >
+        <input
+          type="text"
+          value="<%= producto.Id_Producto %>"
+          name="id_producto"
+          class="hidden"
+        />
+        <input
+          type="text"
+          value="<%= producto.Nombre %>"
+          name="nombre"
+          class="hidden"
+        />
+        <input type="text" value="3" name="cantidad_producto" class="hidden" />
+        <input
+          type="text"
+          value="<%= producto.Imagen %>"
+          name="imagen_producto"
+          class="hidden"
+        />
+        <input
+          type="text"
+          value="<%= producto.Precio %>"
+          name="precio_producto"
+          class="hidden"
+        />
+      </form>
+      <div id="IdProductoForm">
+        <input
+          type="text"
+          value="<%= producto.Id_Producto %>"
+          name="id_producto"
+          class="hidden"
+          id="id_producto"
+        />
+        <input
+          type="text"
+          value="<%= producto.Precio %>"
+          name="precio_producto"
+          class="hidden"
+          id="precio"
+        />
+        <input
+          type="text"
+          value="<%= producto.Nombre %>"
+          name="nombre"
+          class="hidden"
+        />
+        <div class="sidebar-top">
+          <h2 class="sidebar-title"><%= producto.Nombre %></h2>
+          <p class="sidebar-price">$<%= producto.Precio %></p>
+          <div class="sidebar-time_container">
+            <p class="sidebar-deliveryTime mint">
+              Llega gratis en <span class="bold">3 días</span>
+            </p>
+            <p class="sidebar-devolutionTime mint">Devolución gratis</p>
+            <p>Tienes 30 días desde que lo recibes.</p>
           </div>
-          <div class="sidebar-bottom">
-            <div class="sidebar-cuantity">
-              <label for="">Cantidad: </label>
-              <select name="cantidad_producto" id="cantidad_producto">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-            <div class="sidebar-buttons">
-              <button class="btnComprar" form="IdProductoForm">Comprar</button>
-              <button type="submit" class="btnAgregarCarrito" form="formCarrito" onclick="confirmar()">Agregar al carrito</button>
-            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-cuantity">
+            <label for="">Cantidad: </label>
+            <select name="cantidad_producto" id="cantidad_producto">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
-        </form>
+        </div>
+        <div class="sidebar-buttons">
+          <button class="btnComprar" onclick="mandarProductos()">
+            Comprar
+          </button>
+          <button
+            type="submit"
+            class="btnAgregarCarrito"
+            form="formCarrito"
+            onclick="confirmar()"
+          >
+            Agregar al carrito
+          </button>
+        </div>
       </div>
+    </div>
     <section class="section1" id="section1">
       <div class="productInfo-container">
         <div class="characteristics-container">
-          <h3>Características principales</h1>
-            <table class="table">
+          <h3>Características principales</h3>
+          <table class="table">
             <tbody>
-              <tr><td class="graybg">Marca</td><td><%= producto.Marca%></td></tr>
-              <tr><td class="graybg">Género</td><td>Hombre</td></tr>
-              <tr><td class="graybg">Material principal</td><td><%= producto.Material%></td></tr>
+              <tr>
+                <td class="graybg">Marca</td>
+                <td><%= producto.Marca%></td>
+              </tr>
+              <tr>
+                <td class="graybg">Género</td>
+                <td>Hombre</td>
+              </tr>
+              <tr>
+                <td class="graybg">Material principal</td>
+                <td><%= producto.Material%></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -80,21 +141,58 @@
           <h3>Puntos en la compra</h3>
           <p class="mint points">+<%= producto.Valor_Puntos%></p>
           <h3>Puntos para comprar este producto</h3>
-          <p class="mint points"> <%= producto.Costo_Puntos %></p>
+          <p class="mint points"><%= producto.Costo_Puntos %></p>
         </div>
       </div>
     </section>
+    <script src="js/payDoneIndividual.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.all.min.js"></script>
     <script>
-      function confirmar(){
+      function confirmar() {
         Swal.fire({
-        icon:'success',
-        title: 'Producto agregado',
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true})
+          icon: "success",
+          title: "Producto agregado",
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        });
+      }
+      async function mandarProductos() {
+        let responseId = await fetch("/IdUsuario");
+        let dataId = await responseId.json();
+        const usuario = dataId.idUsuarioDevuelto;
+        console.log(usuario);
+        confirmar();
+        // const btnComprar = document.querySelector(".btnComprar");
+        const form = document.querySelectorAll("#IdProductoForm");
+        let arregloProductos = [];
+        form.forEach((element) => {
+          const producto = {
+            id: element.querySelector("#id_producto").value,
+            precio: element.querySelector("#precio").value,
+            cantidad: element.querySelector("#cantidad_producto").value,
+            idUsuario: usuario,
+          };
+          arregloProductos.push(producto);
+        });
+        console.log(arregloProductos);
+        mandarDatos();
+
+        async function mandarDatos() {
+          let response = await fetch("/payDone", {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({ arregloProductos }),
+          });
+          let data = await response.json();
+          window.location.href = "/";
+          console.log(data);
+        }
       }
     </script>
-      <%- include ("template/footer") %>
+    <%- include ("template/footer") %>
   </body>
 </html>
