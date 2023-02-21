@@ -34,6 +34,12 @@
             name="cantidad_producto"
             class="hidden"
           />
+          <input
+            type="text"
+            value="<%= precioProducto %>"
+            name="precio_producto"
+            class="hidden"
+          />
 
           <div class="input-container">
             <label>Nombre</label>
@@ -100,11 +106,25 @@
       function confirmar() {
         Swal.fire({
           icon: "success",
-          title: "Pedido realizado",
+          title: "El precio total de la compra es <%= precioFinal%>",
           showConfirmButton: false,
-          timer: 1000,
+          timer: 3000,
           timerProgressBar: true,
         });
+        // Swal.fire({
+        //   title: "El costo total es: <%#s= precioProducto%>",
+        //   showDenyButton: true,
+        //   showCancelButton: true,
+        //   confirmButtonText: "Comprar",
+        //   denyButtonText: `Cancelar`,
+        // }).then((result) => {
+        //   /* Read more about isConfirmed, isDenied below */
+        //   if (result.isConfirmed) {
+        //     Swal.fire("Compra realizada!");
+        //   } else if (result.isDenied) {
+        //     Swal.fire("Compra cancelada");
+        //   }
+        // });
       }
     </script>
   </body>

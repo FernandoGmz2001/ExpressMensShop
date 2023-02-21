@@ -15,9 +15,22 @@
     <div class="main-dashboard">
       <div class="logo-container">
         <div class="logo-image_container">
-          <img class="logo-image" src="/resources/DashboardIcon.png" alt="" />
+          <a href="/">
+            <img
+              class="logo-image"
+              src="/resources/logo-definitivo.png"
+              alt=""
+            />
+          </a>
         </div>
-        <div class="logo-text"><h1>Dashboard</h1></div>
+        <div class="btnCreate-container">
+          <a href="/create">
+            <i class="bx bxs-plus-circle"></i>
+          </a>
+        </div>
+        <div class="productsCuantity">
+          <h1>Cantidad de productos: <%= results2%></h1>
+        </div>
       </div>
       <div class="dashboard-container">
         <div class="sidebar">
@@ -37,34 +50,38 @@
             <i class="bx bx-paper-plane"></i>
             <a href="/orders" class="link">Pedidos</a>
           </div>
+          <div class="orders-option option">
+            <i class="bx bxs-cog"></i>
+            <a href="/storedProcedures" class="link">Reportes</a>
+          </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
             <a href="/" class="link">Salir</a>
           </div>
         </div>
-        <div class="btnCreate-container">
-          <a href="/create">
-            <i class="bx bxs-plus-circle"></i>
-          </a>
-        </div>
+
         <div class="dashboard-content">
           <table class="table">
             <thead class="thead">
-              <th class="id-product table">Id</th>
-              <th class="name table">Nombre</th>
-              <th class="price table">Precio</th>
-              <th class="weight table">Peso</th>
-              <th class="description table">Descripción</th>
-              <th class="productImage table">Imagen</th>
-              <th class="id-category table">Id/Categoria</th>
-              <th class="cuantity table">Cantidad</th>
-              <th class="grossor table">Grosor</th>
-              <th class="material table">Material</th>
-              <th class="pointsCost table">Costo/Puntos</th>
-              <th class="pointsValue table">Valor/Puntos</th>
-              <th class="proveedor table">Id_Proveedor</th>
-              <th class="marca table">Marca</th>
-              <th class="proveedor table">Nombre/Categoria</th>
+              <tr class="thead-tr">
+                <th class="id-product table">Id</th>
+                <th class="name table">Nombre</th>
+                <th class="price table">Precio</th>
+                <th class="weight table">Peso</th>
+                <th class="description table">Descripción</th>
+                <th class="productImage table">Imagen</th>
+                <th class="id-category table">Id/Categoria</th>
+                <th class="cuantity table">Cantidad</th>
+                <th class="grossor table">Grosor</th>
+                <th class="material table">Material</th>
+                <th class="pointsCost table">Costo/Puntos</th>
+                <th class="pointsValue table">Valor/Puntos</th>
+                <th class="proveedor table">Id_Proveedor</th>
+                <th class="marca table">Marca</th>
+                <th class="proveedor table">Nombre/Categoria</th>
+                <th class="proveedor table"></th>
+                <th class="proveedor table"></th>
+              </tr>
             </thead>
             <tbody class="tbody">
               <% results.forEach((product)=> { %>
@@ -105,6 +122,67 @@
           </table>
         </div>
       </div>
-    </div>
-  </body>
+      <div class="searchProduct">
+        <div class="idProduct-container">
+          <form>
+            <label for="">Ingresa el nombre de un producto:</label>
+            <input type="text" name="id_producto" class="id_producto" />
+            <button type="submit" class="btnCapturarId btnCapturar">Buscar</button>
+          </form>
+          <table>
+            <thead>
+              <th class="id-product table">Id</th>
+              <th class="name table">Nombre</th>
+              <th class="price table">Precio</th>
+              <th class="weight table">Peso</th>
+              <th class="description table">Descripción</th>
+              <th class="productImage table">Imagen</th>
+              <th class="id-category table">Id/Categoria</th>
+              <th class="cuantity table">Cantidad</th>
+              <th class="grossor table">Grosor</th>
+              <th class="material table">Material</th>
+              <th class="pointsCost table">Costo/Puntos</th>
+              <th class="pointsValue table">Valor/Puntos</th>
+              <th class="proveedor table">Id_Proveedor</th>
+              <th class="marca table">Marca</th>
+              <th class="proveedor table">Nombre/Categoria</th>
+              <th class="proveedor table"></th>
+              <th class="proveedor table"></th>
+            </thead>
+            <tbody class="tbody2">
+              <% if(!results3 == '') {%>
+                <% results3.forEach((product)=> { %>
+                  <tr class="filterProduct">z
+                <td class="Id"><%= Id_Producto %></td>
+                <td class="Nombre"></td>
+                <td class="Precio"></td>
+                <td class="Peso"></td>
+                <td class="Descripcion"></td>
+                <td class="Imagen"></td>
+                <td class="IdCategoria"></td>
+                <td class="Cantidad"></td>
+                <td class="Grosor"></td>
+                <td class="Material"></td>
+                <td class="CostoPuntos"></td>
+                <td class="ValorPuntos"></td>
+                <td class="IdProveedor"></td>
+                <td class="Marca"></td>
+                <td class="NombreCategoria"></td>
+                <td class="btnEditar-container">
+                  <a href="/edit/" class="btnEditar edit">Editar</a>
+                </td>
+                <td class="btnEliminar-container">
+                  <a
+                    href="/delete/"
+                    class="btnEliminar delete"
+                    onclick="return confirm('Está seguro de eliminar?')"
+                    >Eliminar</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
+              <% }%>
+            </tbody>
+          </table>
+  <script src="/js/searchID.js"></script>
 </html>

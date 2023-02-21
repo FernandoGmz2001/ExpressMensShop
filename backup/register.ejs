@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./css/create.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form action="/register" method="POST" class="form">
+        <div class="form-title"><h3>Registro</h3></div>
+        <div class="form-content">
+          <div class="input-container">
+            <label>Nombre</label>
+            <input type="text" required name="nombre" id="nombre" />
+          </div>
+          <div class="input-container">
+            <label>Apellido Paterno</label>
+            <input
+              type="text"
+              required="true"
+              name="apellido_paterno"
+              id="precio"
+              value=""
+            />
+          </div>
+          <div class="input-container">
+            <label>Apellido Materno</label>
+            <input type="text" required name="apellido_materno" />
+          </div>
+          <div class="input-container">
+            <label>Correo</label>
+            <input type="text" required name="correo" />
+          </div>
+          <div class="input-container">
+            <label>Contraseña</label>
+            <input type="password" required name="contraseña" />
+          </div>
+          <div class="btnContainer">
+            <button type="submit" value="submit" class="btnGuardar">
+              Registrar
+            </button>
+            <a class="btnCancelar" href="/">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

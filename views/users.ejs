@@ -16,9 +16,14 @@
     <div class="main-dashboard">
       <div class="logo-container">
         <div class="logo-image_container">
-          <img class="logo-image" src="/resources/DashboardIcon.png" alt="" />
+          <a href="/">
+            <img
+              class="logo-image"
+              src="/resources/logo-definitivo.png"
+              alt=""
+            />
+          </a>
         </div>
-        <div class="logo-text"><h1>Dashboard</h1></div>
       </div>
       <div class="dashboard-container">
         <div class="sidebar">
@@ -37,6 +42,10 @@
           <div class="orders-option option">
             <i class="bx bx-paper-plane"></i>
             <a href="/orders" class="link">Pedidos</a>
+          </div>
+          <div class="orders-option option">
+            <i class="bx bxs-cog"></i>
+            <a href="/storedProcedures" class="link">Reportes</a>
           </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
@@ -57,6 +66,7 @@
               <th class="firstName table">Apellido Paterno</th>
               <th class="secondName table">Apellido Materno</th>
               <th class="mail table">Correo</th>
+              <th class="mail table">Puntos</th>
             </thead>
             <tbody>
               <% results.recordsets[0].forEach((user)=> { %>
@@ -66,6 +76,7 @@
                 <td class="table-cell"><%= user.Apellido_Paterno %></td>
                 <td class="table-cell"><%= user.Apellido_Materno%></td>
                 <td class="table-cell"><%= user.Correo%></td>
+                <td class="table-cell"><%= user.Puntos%></td>
                 <td class="btnEliminar-container">
                   <a
                     href="/deleteUser/<%= user.Id_Usuario%>"

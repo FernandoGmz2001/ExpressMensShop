@@ -1,19 +1,34 @@
 <head>
   <link rel="stylesheet" href="/css/navbar.css" />
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
 </head>
 <nav class="navbar">
-  <div class="navbar-logo">
-    <a href="/" class="logo-link">
-      <img src="/resources/logo-definitivo.png" alt="logo" class="logo" />
-    </a>
-  </div>
-  <div class="navbar-account">
-    <a href="/dashboard">
-      <img src="/resources/ProfileIcon.png" alt="ProfileIcon" />
-    </a>
-    <!-- <i class="bx bxs-heart hidden"></i> -->
-    <a href="/carrito">
-      <img src="/resources/BagIcon.png" alt="BagIcon" />
-    </a>
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="/" class="logo-link">
+        <img src="/resources/logo-definitivo.png" alt="logo" class="logo" />
+      </a>
+    </div>
+    <divo class="navbar-account">
+      <% name %>
+      <a href="/logout">
+        <i class="bx bx-log-out"></i>
+      </a>
+      <% if (name == 'fernandogmz2001@gmail.com') { %>
+      <a href="/dashboard">
+        <i class="bx bx-objects-vertical-bottom"></i>
+      </a>
+      <%} else { %>
+      <a href="/dashboard" class="hidden">
+        <i class="bx bx-objects-vertical-bottom hidden"></i>
+      </a>
+      <% } %>
+      <a href="/carrito">
+        <i class="bx bx-cart"></i>
+      </a>
+    </divo>
   </div>
 </nav>

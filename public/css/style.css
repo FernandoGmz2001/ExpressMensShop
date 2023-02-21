@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,10 +9,170 @@
 
 body {
   background: white;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  padding: 20px var(--side-padding);
+  position: sticky;
+  /* top: 0;
+  z-index: 3;
+  background-color: white; */
 }
 
 :root {
   --side-padding: 60px;
+  --mint: #1bed83;
+}
+
+.header-container {
+  padding: 0px var(--side-padding);
+  display: flex;
+  height: 80vh;
+}
+
+.info-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  animation: slideIn 1s ease-in-out;
+}
+
+.info-container_title {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+}
+.info-container_subtitle {
+  font-size: 1.2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.btnCompraYa {
+  /* padding: 10px 20px;
+  margin-top: 15px;
+  border: transparent;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer; */
+  background-image: linear-gradient(
+    to right,
+    #000000 0%,
+    #434343 51%,
+    #000000 100%
+  );
+  margin: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.btnCompraYa:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.image-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  top: 74px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--mint); */
+  width: 400px;
+  height: 400px;
+  border-radius: 100%;
+  background: rgb(0, 255, 98);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 98, 1) 0%,
+    rgba(175, 255, 214, 0.3) 100%
+  );
+}
+
+.dot-image {
+  z-index: 2;
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-250px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.middle {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mouse {
+  width: 20px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 60px;
+}
+
+.mouse::before {
+  content: "";
+  width: 5px;
+  height: 10px;
+  position: absolute;
+  top: 30px;
+  background: black;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  opacity: 1;
+  animation: mouse 1s infinite;
+}
+@keyframes mouse {
+  from {
+    opacity: 1;
+    top: 5px;
+  }
+  to {
+    opacity: 0;
+    top: 10px;
+  }
 }
 
 .spanActualSection {
@@ -28,8 +189,13 @@ body {
 }
 
 .main-container {
-  margin-top: 40px;
-  padding: 0px 60px;
+  padding: 150px 60px 0 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.main-containerFilter {
+  padding: 40px 60px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -61,10 +227,6 @@ body {
   margin-top: 15px;
 }
 
-.product-card_price {
-  font-weight: bold;
-}
-
 .article-products {
   margin-top: 40px;
 }
@@ -88,12 +250,11 @@ body {
 .product-card {
   border-radius: 10px;
   width: 250px;
-  height: 400px;
-  background-color: white;
+  height: 450px;
   border: 1px solid lightgray;
 }
 
-.product-card:hover {
+.product-link:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -105,9 +266,23 @@ body {
 
 .product-content {
   padding: 5px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .product-name {
+  font-weight: 600;
+}
+.product-price {
+  color: gray;
+}
+
+.product-send {
+  color: var(--mint);
+}
+
+.Mens {
   font-weight: bold;
 }
 
@@ -160,4 +335,13 @@ body {
 
 .category {
   color: gray;
+}
+
+.unavailable {
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.product-sellOut {
+  color: red;
 }

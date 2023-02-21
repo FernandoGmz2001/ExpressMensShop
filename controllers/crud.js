@@ -28,7 +28,7 @@ exports.save = (req, res) => {
     if (err) {
       throw err;
     } else {
-      res.redirect("/dashboard");
+      res.redirect("/dashboard", { name: this.corr });
     }
   });
 };
@@ -69,7 +69,7 @@ exports.edit = (req, res) => {
     if (err) {
       throw err;
     } else {
-      res.render("edit", { producto: results.recordset[0] });
+      res.render("edit", { producto: results.recordset[0], name: this.corr });
     }
   });
 };
@@ -98,6 +98,7 @@ exports.productPage = (req, res) => {
     } else {
       res.render("productPage", {
         producto: results.recordset[0],
+        name: this.corr,
       });
     }
   });
@@ -121,6 +122,7 @@ exports.indexCategory = (req, res) => {
             categorias: answer.recordset,
             results: results.recordsets[0],
             currentCategory: category,
+            name: this.corr,
           });
         }
       });
@@ -137,7 +139,7 @@ exports.register = async (req, res) => {
   const contraseña = req.body.contraseña;
   let passwordHaash = await bcryptjs.hash(contraseña, 8);
 
-  var consulta = `INSERT INTO Usuarios (Nombre,Apellido_Paterno,Apellido_Materno,Correo,Contraseña) VALUES ('${nombre}','${apellido_paterno}','${apellido_materno}','${correo}','${passwordHaash}')`;
+  var consulta = `INSERT INTO Usuarios (Nombre,Apellido_Paterno,Apellido_Materno,Correo,Contraseña,Puntos) VALUES ('${nombre}','${apellido_paterno}','${apellido_materno}','${correo}','${passwordHaash}','0')`;
   request.query(consulta, async (error, results) => {
     if (results.lenght > 0) {
       res.render("login", { error: "Usuario existente" });
@@ -248,6 +250,18 @@ exports.deletePedido = (req, res) => {
       throw err;
     } else {
       res.redirect("/orders");
+    }
+  });
+};
+
+exports.deleteUser = (req, res) => {
+  const id = req.params.id;
+  var consulta = `DELETE FROM Usuarios WHERE Id_Usuario = '${id}'`;
+  request.query(consulta, (err, results) => {
+    if (err) {
+      throw err;
+    } else {
+      res.redirect("/users");
     }
   });
 };

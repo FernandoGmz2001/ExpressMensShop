@@ -13,10 +13,34 @@
   </head>
   <body>
     <%- include ("template/navbar") %>
-    <div class="main-container">
+    <div class="header-container">
+      <div class="info-container">
+        <h1 class="info-container_title">¡LA MEJOR ROPA PARA HOMBRE!</h1>
+        <p class="info-container_subtitle">Únete a nosotros y viste bien</p>
+        <div class="info-container_button">
+          <a href="#section1" class="link">
+            <button class="btnCompraYa">Compra ya</button>
+          </a>
+        </div>
+      </div>
+      <div class="image-container">
+        <div class="dot-container">
+          <div class="dot"></div>
+          <img
+            src="/resources/camisa transparente.png"
+            alt=""
+            class="dot-image"
+          />
+        </div>
+      </div>
+      <div class="middle">
+        <div class="mouse"></div>
+      </div>
+    </div>
+    <section class="main-container" id="section1">
       <div class="header">
         <div class="currentCategory">
-          <p>Hombres</p>
+          <p class="Mens">Hombres</p>
           <p>></p>
           <p>Accesorios</p>
         </div>
@@ -40,10 +64,25 @@
 
         <div class="products-container">
           <% results.forEach((product)=> { %>
-          <a
-            href="/productPage/<%= product.Id_Producto %>"
-            class="product-link"
-          >
+            <% if (product.Cantidad <= 0) {%>
+              <a
+                href="/productPage/<%= product.Id_Producto %>"
+                class="product-link unavailable"
+              >
+            <div class="product-card unavailable">
+              <div class="product-image">
+                <img src="<%= product.Imagen %>" alt="" class="imagen" />
+              </div>
+              <div class="product-content">
+                <p class="product-name"><%= product.Nombre %></p>
+                <p class="product-price">$ <%= product.Precio %></p>
+                <p class="product-sellOut">Agotado</p>
+              </div>
+              <% }else { %>
+                <a
+                href="/productPage/<%= product.Id_Producto %>"
+                class="product-link"
+              >
             <div class="product-card">
               <div class="product-image">
                 <img src="<%= product.Imagen %>" alt="" class="imagen" />
@@ -51,13 +90,16 @@
               <div class="product-content">
                 <p class="product-name"><%= product.Nombre %></p>
                 <p class="product-price">$ <%= product.Precio %></p>
+                <p class="product-send">Envío gratis</p>
               </div>
+     
+              <% } %>
             </div>
           </a>
           <% }) %>
         </div>
       </div>
-    </div>
+    </section>
     <%- include ("template/footer") %>
   </body>
 </html>

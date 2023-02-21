@@ -3,12 +3,12 @@ var bodyParser = require("body-parser");
 var app = express();
 const sql = require("mssql");
 var request = new sql.Request();
-const conexion = require("./database/db");
 const session = require("express-session");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.json());
 app.use("/", require("./router"));
 
 app.use(express.static(__dirname + "/public"));
@@ -24,3 +24,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use((req, res) => {
+  res.send("404");
+});

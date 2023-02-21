@@ -16,9 +16,14 @@
     <div class="main-dashboard">
       <div class="logo-container">
         <div class="logo-image_container">
-          <img class="logo-image" src="/resources/DashboardIcon.png" alt="" />
+          <a href="/">
+            <img
+              class="logo-image"
+              src="/resources/logo-definitivo.png"
+              alt=""
+            />
+          </a>
         </div>
-        <div class="logo-text"><h1>Dashboard</h1></div>
       </div>
       <div class="dashboard-container">
         <div class="sidebar">
@@ -35,8 +40,12 @@
             <a href="/users" class="link">Usuarios</a>
           </div>
           <div class="orders-option option focused">
-            <i class="bx bx-paper-plane"></i>
+            <i class="bx bxs-paper-plane"></i>
             <a href="/orders" class="link link-focused">Pedidos</a>
+          </div>
+          <div class="orders-option option">
+            <i class="bx bxs-cog"></i>
+            <a href="/storedProcedures" class="link">Reportes</a>
           </div>
           <div class="exit-option option">
             <i class="bx bxs-exit"></i>
@@ -51,24 +60,26 @@
           </div> -->
           <table class="table">
             <thead>
-              <!-- <th class="id-user table">Id</th> -->
-              <th class="userId table">Id Pedido</th>
-              <th class="name table">Id/Producto</th>
-              <th class="name table">Fecha</th>
-              <th class="firstName table">Correo usuario</th>
-              <th class="name table">Nombre/Producto</th>
-              <th class="name table">Descripcion/Producto</th>
-              <th class="secondName table">Cantidad Pedido</th
+              <tr class="thead-tr">
+                <th class="userId table">Id Pedido</th>
+                <th class="name table">Id/Producto</th>
+                <th class="firstName table">Correo usuario</th>
+                <th class="name table">Nombre/Producto</th>
+                <th class="secondName table">Cantidad Pedido</th>
+                <th class="secondName table">Id/Usuario</th>
+                <th class="secondName table"></th>
+              </tr>
             </thead>
             <tbody>
               <% results.forEach((pedido)=> { %>
               <tr>
                 <td class="table-cell"><%= pedido.Id_Pedido%></td>
                 <td class="table-cell"><%= pedido.Id_Producto_Pedido%></td>
-                <td class="table-cell"><%= pedido.Fecha_Pedido%></td>
 
                 <td class="table-cell"><%= pedido.Correo_Usuario %></td>
+                <td class="table-cell"><%= pedido.Nombre %></td>
                 <td class="table-cell"><%= pedido.Cantidad_Pedido%></td>
+                <td class="table-cell"><%= pedido.Id_Usuario%></td>
                 <td class="btnEliminar-container">
                   <a
                     href="/deletePedido/<%= pedido.Id_Pedido%>"
@@ -83,16 +94,20 @@
           </table>
         </div>
       </div>
-      <form class="form" action="post" method="/countMonthSells">
+      <!-- <div class="form" action="get" method="/spcontarVentas">
         <div class="form-group">
-          <p class="ventasMes">Ventas en el mes: </p>
-          <button class="" type="submit">Contar</button>
+          <p class="">Ventas en el mes:</p>
+          <button class="btnContar" type="submit">Contar</button>
         </div>
-      </form>
+      </div> -->
     </div>
-    <script>
-
-
-    </script>
   </body>
+
+  <script>
+    const btnContar = document.querySelector(".btnContar");
+    const ventas = document.querySelector(".ventas");
+    btnContar.addEventListener("click", () => {
+      ventas.classList.remove("hidden");
+    });
+  </script>
 </html>

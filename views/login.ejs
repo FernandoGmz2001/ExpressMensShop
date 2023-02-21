@@ -4,37 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/create.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <title>Main page</title>
   </head>
   <body>
-    <div class="form-container">
-      <form action="/auth" method="POST" class="form">
-        <div class="form-title"><h3>Iniciar sesión</h3></div>
-        <div class="form-content">
-          <div class="input-container">
-            <label>Correo</label>
-            <input type="text" required name="correo" id="correo" />
+    <main class="main">
+      <div class="login-container">
+        <form class="login-content" action="/auth" method="POST">
+          <div class="login-header">
+            <h1>Inicia sesión</h1>
           </div>
-          <div class="input-container">
-            <label>Contraseña</label>
-            <input type="password" required name="contraseña" />
+          <div class="form-group">
+            <label for="">Correo</label>
+            <input type="email" name="correo" />
+          </div>
+          <div class="form-group">
+            <label for="">Contraseña</label>
+            <input type="password" name="contraseña" />
           </div>
           <% if (error) {%>
           <p class="error"><%= error %></p>
           <% } %>
-          <p class="account">No tienes cuenta? <a href="register">Regístrate aquí</a></p>
-            <button type="submit" value="submit" class="btnGuardar">
-              Iniciar Sesión
+          <div class="form-group">
+            <button class="btnIniciarSesion" type="submit">
+              Iniciar sesión
             </button>
-            <a class="btnCancelar" href="/">Cancelar</a>
           </div>
-        </div>
-      </form>
-    </div>
+          <div class="form-group">
+            <p class="noTienesCuenta">
+              No tienes cuenta?
+              <a href="register" class="accountState">Regístrate aquí</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="login-image-container">
+        <img
+          src="https://images.unsplash.com/photo-1608447714925-599deeb5a682?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
+          alt=""
+          class="login-image"
+        />
+      </div>
+    </main>
   </body>
 </html>
