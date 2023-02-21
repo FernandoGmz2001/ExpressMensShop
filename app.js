@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 var app = express();
 const sql = require("mssql");
 var request = new sql.Request();
-const conexion = require("./database/db");
 const session = require("express-session");
 
 app.set("view engine", "ejs");

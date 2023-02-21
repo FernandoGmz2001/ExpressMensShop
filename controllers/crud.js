@@ -28,7 +28,7 @@ exports.save = (req, res) => {
     if (err) {
       throw err;
     } else {
-      res.redirect("/dashboard");
+      res.redirect("/dashboard", { name: this.corr });
     }
   });
 };
@@ -69,7 +69,7 @@ exports.edit = (req, res) => {
     if (err) {
       throw err;
     } else {
-      res.render("edit", { producto: results.recordset[0] });
+      res.render("edit", { producto: results.recordset[0], name: this.corr });
     }
   });
 };
@@ -98,6 +98,7 @@ exports.productPage = (req, res) => {
     } else {
       res.render("productPage", {
         producto: results.recordset[0],
+        name: this.corr,
       });
     }
   });
@@ -121,6 +122,7 @@ exports.indexCategory = (req, res) => {
             categorias: answer.recordset,
             results: results.recordsets[0],
             currentCategory: category,
+            name: this.corr,
           });
         }
       });

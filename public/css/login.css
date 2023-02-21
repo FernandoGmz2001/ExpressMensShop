@@ -141,3 +141,18 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 1200px) {
+  .login-image-container {
+    display: none;
+  }
+
+  .login-container {
+    width: 100%;
+  }
+
+  .login-content {
+    max-width: 600px;
+    min-width: 300px;
+  }
+}

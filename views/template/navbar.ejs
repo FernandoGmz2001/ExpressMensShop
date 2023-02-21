@@ -13,12 +13,19 @@
       </a>
     </div>
     <divo class="navbar-account">
+      <% name %>
       <a href="/logout">
         <i class="bx bx-log-out"></i>
       </a>
+      <% if (name == 'fernandogmz2001@gmail.com') { %>
       <a href="/dashboard">
         <i class="bx bx-objects-vertical-bottom"></i>
       </a>
+      <%} else { %>
+      <a href="/dashboard" class="hidden">
+        <i class="bx bx-objects-vertical-bottom hidden"></i>
+      </a>
+      <% } %>
       <a href="/carrito">
         <i class="bx bx-cart"></i>
       </a>

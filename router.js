@@ -143,13 +143,20 @@ router.post("/payDone", (req, res) => {
   }, 1000);
 });
 
+let precioTotal = 0;
 router.post("/payDoneMultiple", (req, res) => {
   const longitudArreglo = req.body.longitudArreglo;
   const arregloProductos = req.body.arregloProductos;
-  console.log(`La longitud del arreglo es ${longitudArreglo}`);
+  for (let i = 0; i < longitudArreglo; i++) {
+    precioTotal += parseInt(arregloProductos[i].precio);
+  }
+  console.log(precioTotal);
+  // arregloProductos.forEach((objeto) => {
+  //   let precio = objeto.precio;
+  //   console.log(precio);
+  // });
   const correo_usuario = crud.corr;
   for (let i = 0; i < longitudArreglo; i++) {
-    console.log(arregloProductos[i]);
     var consulta = `INSERT INTO Pedidos (Id_Producto_Pedido,Correo_Usuario,Cantidad_Pedido,Fecha_Pedido,Id_Usuario) VALUES ('${arregloProductos[i].id}','${correo_usuario}','${arregloProductos[i].cantidad}','${fecha}','${arregloProductos[i].idUsuario}')`;
     request.query(consulta, (err, results) => {
       if (err) {
@@ -300,6 +307,7 @@ router.get("/carrito", (req, res) => {
         res.render("carrito", {
           cartProducts: results.recordsets[0],
           correoUsuario: crud.corr,
+          name: crud.corr,
         });
       }
     }
@@ -319,7 +327,9 @@ router.get("/users", (req, res) => {
 
 //Ruta crear producto
 router.get("/create", (req, res) => {
-  res.render("create");
+  res.render("create", {
+    name: crud.corr,
+  });
 });
 
 //Ruta registrar usuario

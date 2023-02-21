@@ -72,9 +72,21 @@
         </div>
       </form>
       <% }) %>
-      <button class="btnComprar">Comprar</button>
+      <button class="btnComprar" onclick="confirmar()">Comprar</button>
       <% } %>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.14.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+      function confirmar() {
+        Swal.fire({
+          icon: "success",
+          title: "Compra realizada",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        });
+      }
+    </script>
     <script src="js/captureCart.js"></script>
   </body>
 </html>
